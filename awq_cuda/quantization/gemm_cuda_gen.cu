@@ -157,13 +157,14 @@ __global__ void __launch_bounds__(64) gemm_forward_4bit_cuda_m16n128k32(int G, i
           : "l"((void *)((&(A_shared[(k_0_1 * 16)])) + (((((int)threadIdx.x) & 15) * 40) + ((((int)threadIdx.x) >> 4) * 8))))
         );
 
-
+/*
         asm volatile(
           "ldmatrix.sync.aligned.m8n8.x4.shared.b16"
           "{%0, %1, %2, %3}, [%4];\n"
           : "=r"(((unsigned *)(A_shared_warp + 0))[0]), "=r"(((unsigned *)(A_shared_warp + 0))[1]), "=r"(((unsigned *)(A_shared_warp + 0))[2]), "=r"(((unsigned *)(A_shared_warp + 0))[3])
           : "r"(addr)
         );
+*/
       }
 
       for (int ax1_0 = 0; ax1_0 < 4; ++ax1_0) {
@@ -174,12 +175,14 @@ __global__ void __launch_bounds__(64) gemm_forward_4bit_cuda_m16n128k32(int G, i
             : "=r"(addr)
             : "l"((void *)((&(B_shared[(((k_0_1 * 2176) + (((int)threadIdx.y) * 64)) + (ax1_0 * 16))])) + (((((int)threadIdx.x) & 15) * 136) + ((((int)threadIdx.x) >> 4) * 8))))
           );
+/*
           asm volatile(
             "ldmatrix.sync.aligned.m8n8.x4.trans.shared.b16"
             "{%0, %1, %2, %3}, [%4];\n"
             : "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[0]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[1]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[2]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[3])
             : "r"(addr)
           );
+*/
         }
       }
       for (int j_0_4 = 0; j_0_4 < 4; ++j_0_4) {
@@ -353,12 +356,14 @@ __global__ void __launch_bounds__(64) gemm_forward_4bit_cuda_m16n64k32(int G, in
           : "=r"(addr)
           : "l"((void *)((&(A_shared[(k_0_1 * 16)])) + (((((int)threadIdx.x) & 15) * 40) + ((((int)threadIdx.x) >> 4) * 8))))
         );
+/*
         asm volatile(
           "ldmatrix.sync.aligned.m8n8.x4.shared.b16"
           "{%0, %1, %2, %3}, [%4];\n"
           : "=r"(((unsigned *)(A_shared_warp + 0))[0]), "=r"(((unsigned *)(A_shared_warp + 0))[1]), "=r"(((unsigned *)(A_shared_warp + 0))[2]), "=r"(((unsigned *)(A_shared_warp + 0))[3])
           : "r"(addr)
         );
+*/
       }
         
 
@@ -371,12 +376,14 @@ __global__ void __launch_bounds__(64) gemm_forward_4bit_cuda_m16n64k32(int G, in
             : "=r"(addr)
             : "l"((void *)((&(B_shared[(((k_0_1 * 1152) + (((int)threadIdx.y) * 32)) + (ax1_0 * 16))])) + (((((int)threadIdx.x) & 15) * 72) + ((((int)threadIdx.x) >> 4) * 8))))
           );
+/*
           asm volatile(
             "ldmatrix.sync.aligned.m8n8.x4.trans.shared.b16"
             "{%0, %1, %2, %3}, [%4];\n"
             : "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[0]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[1]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[2]), "=r"(((unsigned *)(B_shared_warp + (ax1_0 * 8)))[3])
             : "r"(addr)
           );
+*/
         }
       }
       
