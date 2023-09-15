@@ -77,12 +77,12 @@ def get_compute_capabilities():
     compute_capabilities = set()
     for i in range(torch.cuda.device_count()):
         major, minor = torch.cuda.get_device_capability(i)
-        if major < 8:
-            raise RuntimeError("GPUs with compute capability less than 8.0 are not supported.")
+        if major < 7.5:
+            raise RuntimeError("GPUs with compute capability less than 7.5 are not supported.")
         compute_capabilities.add(major * 10 + minor)
 
     # figure out compute capability
-    compute_capabilities = {80, 86, 89, 90}
+    compute_capabilities = {75, 80, 86, 89, 90}
 
     capability_flags = []
     for cap in compute_capabilities:
